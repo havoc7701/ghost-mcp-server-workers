@@ -103,19 +103,29 @@ printf '%s\n' "$SEAL_PROBE_TOKEN" | npx wrangler secret put X_SEAL_PROBE_TOKEN
 printf '%s\n' "$SEAL_PROBE_TOKEN"
 ```
 
-Copy the printed value into the Cloudflare Bot Management custom rule on the zone
-that protects Ghost. Add the seal as an exclusion from the challenge condition:
+If Bot Management is not challenging requests to the Ghost Admin API, no WAF rule
+change is required. The Worker can still send the seal header, but it grants no
+special treatment by itself.
+
+If Bot Management is active on the Ghost zone, open **Security > WAF > Custom
+rules** and add the seal as a narrowly scoped exclusion inside the existing bot
+challenge rule. Replace the hostname and token in this example:
 
 ```text
-(<bot challenge conditions> and
- all(http.request.headers["x-seal-probe"][*] ne "<replace-token-value-here>"))
+(cf.bot_management.score le 29 and
+ not cf.bot_management.verified_bot and
+ not (
+   http.host eq "www.example.com" and
+   starts_with(http.request.uri.path, "/ghost/api/admin/") and
+   any(http.request.headers["x-seal-probe"][*] eq "<replace-token-value-here>")
+ ))
 ```
 
-The `all(... ne ...)` condition remains true when the header is absent or no value
-matches, so ordinary low-score bots are still challenged. A matching seal makes the
-condition false and excludes only that request from this challenge rule. Keep all
-other WAF, rate-limiting, and access controls active. After saving the rule, clear
-the shell variable:
+Keep the rule's existing Challenge action. Requests are excluded only when the
+hostname, Ghost Admin API path, and secret header all match. Missing, incorrect, or
+out-of-scope seal values remain subject to the bot challenge. Do not create a broad
+Allow or Skip rule for the token; all other WAF, rate-limiting, and access controls
+should remain active. After saving the rule, clear the shell variable:
 
 ```sh
 unset SEAL_PROBE_TOKEN
