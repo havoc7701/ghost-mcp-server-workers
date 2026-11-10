@@ -1,0 +1,8 @@
+node_modules/
+.wrangler/
+.dev.vars*
+.env*
+worker-configuration.d.ts
+.DS_Store
+blog-temp/
+ghost_mcp_server_on_cloudflare_chat_export.md

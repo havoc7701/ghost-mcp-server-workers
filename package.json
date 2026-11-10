@@ -1,0 +1,34 @@
+{
+  "name": "ghost-mcp-server-workers",
+  "version": "0.2.0",
+  "description": "Cloudflare Workers-native MCP server for secure Ghost post management",
+  "private": true,
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/havoc7701/ghost-mcp-server-workers.git"
+  },
+  "keywords": [
+    "cloudflare-workers",
+    "ghost",
+    "mcp",
+    "model-context-protocol"
+  ],
+  "type": "module",
+  "scripts": {
+    "deploy": "wrangler deploy",
+    "dev": "wrangler dev",
+    "type-check": "tsc --noEmit",
+    "cf-typegen": "wrangler types"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/server": "2.4.0",
+    "agents": "^0.33.0",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^5.20261109.1",
+    "typescript": "^7.0.2",
+    "wrangler": "^4.159.0"
+  }
+}

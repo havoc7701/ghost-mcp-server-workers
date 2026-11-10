@@ -1,0 +1,27 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "ghost-mcp-server",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-11-09",
+  "account_id": "e5348d557b6abcdfeb15f476fd3127d9",
+  "workers_dev": false,
+  "preview_urls": false,
+  "routes": [
+    {
+      "pattern": "ghost-mcp.vkdesigns.com",
+      "custom_domain": true
+    }
+  ],
+  "vars": {
+    "GHOST_ADMIN_API_URL": "https://www.knowledge.wine",
+    "GHOST_API_VERSION": "v6.0",
+    "GHOST_USER_AGENT": "KnowledgeWineGhostMCP/0.2 (+https://ghost-mcp.vkdesigns.com)",
+    "MCP_ALLOWED_HOSTNAMES": "ghost-mcp.vkdesigns.com,localhost,127.0.0.1"
+  },
+  "secrets": {
+    "required": ["GHOST_ADMIN_API_KEY", "MCP_API_TOKEN"]
+  },
+  "observability": {
+    "enabled": true
+  }
+}
