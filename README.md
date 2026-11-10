@@ -119,10 +119,12 @@ Before every major GitHub update, follow the Knowledge.Wine validation gate in
 
 ## Origin
 
-This implementation was independently built for Cloudflare Workers after evaluating
-several Ghost MCP projects. It was inspired by the narrow post-management scope of
-[`nautis/ghost-mcp-server`](https://github.com/nautis/ghost-mcp-server), but it is
-not a fork and does not share its Node.js `stdio` transport architecture.
+This implementation is a Cloudflare Workers-native refactor inspired by the narrow
+post-management scope of
+[`nautis/ghost-mcp-server`](https://github.com/nautis/ghost-mcp-server). Its
+transport and deployment architecture were rewritten for Workers, with the tool
+surface deliberately limited to the documented Ghost post CRUD operations. It is
+not a GitHub fork and does not share the original Node.js `stdio` transport.
 
 ## License
 
