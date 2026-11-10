@@ -15,17 +15,15 @@
   "vars": {
     "GHOST_ADMIN_API_URL": "https://www.knowledge.wine",
     "GHOST_API_VERSION": "v6.0",
-    "GHOST_USER_AGENT": "KnowledgeWineGhostMCP/0.2 (+https://ghost-mcp.vkdesigns.com)",
     "MCP_ALLOWED_HOSTNAMES": "ghost-mcp.vkdesigns.com,localhost,127.0.0.1"
   },
   "secrets": {
-    "required": ["GHOST_ADMIN_API_KEY", "MCP_API_TOKEN"]
+    "required": ["GHOST_ADMIN_API_KEY", "MCP_API_TOKEN", "X_SEAL_PROBE_TOKEN"]
   },
   "previews": {
     "vars": {
       "GHOST_ADMIN_API_URL": "https://example.invalid",
       "GHOST_API_VERSION": "v6.0",
-      "GHOST_USER_AGENT": "GhostMCPServerWorkers-Preview/0.2",
       "MCP_ALLOWED_HOSTNAMES": "localhost,127.0.0.1"
     }
   },

@@ -6,9 +6,9 @@ interface Env {
   GHOST_ADMIN_API_URL: string;
   GHOST_ADMIN_API_KEY: string;
   GHOST_API_VERSION: string;
-  GHOST_USER_AGENT: string;
   MCP_ALLOWED_HOSTNAMES: string;
   MCP_API_TOKEN: string;
+  X_SEAL_PROBE_TOKEN: string;
 }
 
 type GhostPostInput = {
@@ -117,7 +117,8 @@ async function ghostAdminRequest(
       Accept: "application/json",
       "Accept-Version": env.GHOST_API_VERSION,
       Authorization: `Ghost ${await createGhostToken(env.GHOST_ADMIN_API_KEY)}`,
-      "User-Agent": env.GHOST_USER_AGENT,
+      "User-Agent": "GhostMCPServerWorkers/0.2",
+      "X-Seal-Probe": env.X_SEAL_PROBE_TOKEN,
       ...(options.body === undefined ? {} : { "Content-Type": "application/json" }),
     },
     body: options.body === undefined ? undefined : JSON.stringify(options.body),

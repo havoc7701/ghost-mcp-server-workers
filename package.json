@@ -14,6 +14,19 @@
     "mcp",
     "model-context-protocol"
   ],
+  "cloudflare": {
+    "bindings": {
+      "GHOST_ADMIN_API_KEY": {
+        "description": "Ghost custom integration Admin API key in `id:secret` format."
+      },
+      "MCP_API_TOKEN": {
+        "description": "Generate a bearer token with `openssl rand -hex 32`."
+      },
+      "X_SEAL_PROBE_TOKEN": {
+        "description": "Generate an independent token with `openssl rand -hex 32` and use the same value in the narrow Ghost-zone WAF skip rule documented in the README."
+      }
+    }
+  },
   "type": "module",
   "scripts": {
     "deploy": "wrangler deploy",
