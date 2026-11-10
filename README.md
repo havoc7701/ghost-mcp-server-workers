@@ -114,6 +114,11 @@ For Cloudflare Workers Builds, connect the GitHub repository, choose `main` as
 the production branch, and use `npm run deploy` as the deploy command. Configure
 the two Worker secrets in Cloudflare; never add them to the repository.
 
+Commits to `main` deploy to production through Workers Builds. Other branches use
+`npx wrangler preview` to create isolated Preview URLs for validation before merge.
+The checked-in preview configuration intentionally uses a non-routable Ghost origin
+and no production secrets, so previews validate bundling and Worker startup only.
+
 Before every major GitHub update, follow the Knowledge.Wine validation gate in
 [`PROJECT_PLAN.md`](PROJECT_PLAN.md).
 

@@ -5,7 +5,7 @@
   "compatibility_date": "2026-11-09",
   "account_id": "e5348d557b6abcdfeb15f476fd3127d9",
   "workers_dev": false,
-  "preview_urls": false,
+  "preview_urls": true,
   "routes": [
     {
       "pattern": "ghost-mcp.vkdesigns.com",
@@ -20,6 +20,14 @@
   },
   "secrets": {
     "required": ["GHOST_ADMIN_API_KEY", "MCP_API_TOKEN"]
+  },
+  "previews": {
+    "vars": {
+      "GHOST_ADMIN_API_URL": "https://example.invalid",
+      "GHOST_API_VERSION": "v6.0",
+      "GHOST_USER_AGENT": "GhostMCPServerWorkers-Preview/0.2",
+      "MCP_ALLOWED_HOSTNAMES": "localhost,127.0.0.1"
+    }
   },
   "observability": {
     "enabled": true
