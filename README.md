@@ -5,9 +5,7 @@ server for securely managing posts in [Ghost](https://ghost.org/). It provides a
 small, post-only tool surface over the Ghost Admin API and is designed for remote
 MCP clients, Cloudflare MCP Portals, and Workers Builds.
 
-The reference deployment manages [Knowledge.Wine](https://knowledge.wine) at
-`https://ghost-mcp.vkdesigns.com/mcp`.
-
+The reference deployment manages [Knowledge.Wine](https://knowledge.wine)
 ## Features
 
 - Runs natively on Cloudflare Workers using the Cloudflare Agents SDK.
